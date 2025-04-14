@@ -1,0 +1,55 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.project</groupId>
+  <artifactId>Corridors</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>Corridors</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+  </properties>
+  
+ <dependencies>
+      <dependency>
+        <groupId>com.sun.xml.ws</groupId>
+        <artifactId>jaxws-ri</artifactId>
+        <version>2.3.5</version>
+        <type>pom</type>
+    </dependency>
+</dependencies>
+
+
+ <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>jaxws-maven-plugin</artifactId>
+        <version>2.6</version>
+        <executions>
+          <execution>
+            <id>wsimport-from-jdk</id>
+            <goals>
+              <goal>wsimport</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <wsdlUrls>
+            <wsdlUrl>http://localhost:8080/Server?wsdl</wsdlUrl>
+          </wsdlUrls>
+          <keep>true</keep>
+          <packageName>corridors.service</packageName>
+          <sourceDestDir>src/main/java</sourceDestDir>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
